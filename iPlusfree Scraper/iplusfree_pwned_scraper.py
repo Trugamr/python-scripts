@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
 
+# fixed encoding errors, Pythonic#6090
 
 search = str(input('Do you want to search for a Single or Album ?, yes or no : ')).lower()
 if search in "yes":
