@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from pprint import pprint
 
 
 search = str(input('Do you want to search for a Single or Album ?, yes or no : ')).lower()
@@ -16,7 +17,7 @@ while px <= page:
     r = requests.get(main_url)
     soup = BeautifulSoup(r.content, 'html.parser')
     for item in soup.findAll('a', {'class', 'xst'}):
-        title = item.string.replace('[iTunes Plus AAC M4A] ', '').replace('[iTunes Plus AAC M4A + M4V]', ' ').replace('–', '-').replace("’", "'").replace('…', '...')
+        title = item.string.replace('[iTunes Plus AAC M4A] ', '').replace('[iTunes Plus AAC M4A + M4V]', ' ')
         href = item.get('href')
         # print(title + " - " + href)
         rx = requests.get(href, stream=True)
@@ -28,5 +29,5 @@ while px <= page:
                             ).replace("""','_blank');" type="button" value="Click here"/>""", ''
                               ).replace('</input>', '').replace('<br/>', '').replace('<br>', '').replace('part.', 'Part'
                                 ).replace('http://linkshrink.net/zV3J=', '').replace(']', '').replace('<p>', '').replace('</p>', '').replace('–', '-')
-            print('\n' + title + " : \n" + dlink)
+            pprint('\n' + title + " : \n" + dlink)
     px += 1
