@@ -16,7 +16,7 @@ while px <= page:
     r = requests.get(main_url)
     soup = BeautifulSoup(r.content, 'html.parser')
     for item in soup.findAll('a', {'class', 'xst'}):
-        title = item.string.replace('[iTunes Plus AAC M4A] ', '').replace('[iTunes Plus AAC M4A + M4V] ', '').replace('–', '-').replace("’", "'").replace('…', '...')
+        title = item.string.replace('[iTunes Plus AAC M4A] ', '').replace('[iTunes Plus AAC M4A + M4V] ', '')
         href = item.get('href')
         # print(title + " - " + href)
         rx = requests.get(href, stream=True)
