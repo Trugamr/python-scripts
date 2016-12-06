@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from pprint import pprint
 
 # fixed encoding errors, Pythonic#6090
 
@@ -30,5 +29,5 @@ while px <= page:
                             ).replace("""','_blank');" type="button" value="Click here"/>""", ''
                               ).replace('</input>', '').replace('<br/>', '').replace('<br>', '').replace('part.', 'Part'
                                 ).replace('http://linkshrink.net/zV3J=', '').replace(']', '').replace('<p>', '').replace('</p>', '').replace('–', '-')
-            pprint('\n' + title + " : \n" + dlink)
+            print('\n' + title + " : \n" + dlink)
     px += 1
